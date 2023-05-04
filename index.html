@@ -174,7 +174,7 @@
 		</div><!--// bd -->
 
 		<div id="ft">
-			<p class="counter-number">herr</p>
+			<p id="visitors"></p>
 		</div><!--// footer -->
 
 	</div><!-- // inner -->
@@ -183,13 +183,18 @@
 </div><!--// doc -->
 
 <script>
-   const counter = document.querySelector(".counter-number"); 
-   async function updateCounter(){
-		let response = await fetch("https://dgfvtlxggxrplvbqd7soul4ekm0gpfeb.lambda-url.us-east-1.on.aws/");
-		let data = await response.json();
-		counter.innerHTML = 'You are visitor number:' ${data};
+	const api_url = 'https://dgfvtlxggxrplvbqd7soul4ekm0gpfeb.lambda-url.us-east-1.on.aws/'; 
+   	async function updateCounter(){
+		const response = await fetch(api_url);
+		const data = await response.json();
+		const {visitor} = data;
+
+		document.getElementById('visitors').textContent = visitor;
    }
    updateCounter();
+
+
+
 </script>
 </body>
 </html>
