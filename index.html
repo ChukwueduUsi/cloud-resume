@@ -10,7 +10,27 @@
 
 	<link rel="stylesheet" type="text/css" href="reset-fonts-grids.css" media="all" /> 
 	<link rel="stylesheet" type="text/css" href="resume.css" media="all" />
+	<script>
 
+	const countEl = document.getElementById('vc');
+
+	updateVisitCount();
+	//Testinglllll
+	function updateVisitCount() {
+		fetch('https://dgfvtlxggxrplvbqd7soul4ekm0gpfeb.lambda-url.us-east-1.on.aws/')
+			.then(response => {
+			return response.json()
+		})
+			.then(data => {
+				console.log(data)
+				document.getElementById('count').innerHTML = data;
+			})
+		}
+
+		
+
+	   
+	</script>
 </head>
 <body>
 
@@ -139,7 +159,7 @@
 								Installed and configured Grafana to constantly monitor network bandwidth, memory usage, and hard drive status.</p>
 							</div>
 
-							<div class="job">
+							<div class="job last">
 								<h2>nHub</h2>
 								<h3>Frontend Web Developer</h3>
 								<h4>Mar 2015 - Dec 2018</h4>
@@ -174,7 +194,7 @@
 		</div><!--// bd -->
 
 		<div id="ft">
-			<p id="visitors">dfghj</p>
+			<p>You are visitor number <span id='count'></span></p>
 		</div><!--// footer -->
 
 	</div><!-- // inner -->
@@ -182,20 +202,6 @@
 
 </div><!--// doc -->
 
-<script>
-	const api_url = 'https://dgfvtlxggxrplvbqd7soul4ekm0gpfeb.lambda-url.us-east-1.on.aws/'; 
-   	async function updateCounter(){
-		const response = await fetch(api_url);
-		const data = await response.json();
-		const {visitor} = data;
-
-		document.getElementById('visitors').textContent = visitor;
-   }
-   updateCounter();
-
-
-
-</script>
 </body>
 </html>
 
